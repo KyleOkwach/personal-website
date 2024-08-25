@@ -8,11 +8,11 @@
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
   
-    --text: #051f1c;
-    --background: #f2fdfc;
-    --primary: #147b6d;
-    --secondary: #739ae8;
-    --accent: #2041c5;
+    --text: 5, 31, 28;
+    --background: 242, 253, 252;
+    --primary: 20, 123, 109;
+    --secondary: 115, 154, 232;
+    --accent: 32, 65, 197;
   }
 
   .dark {
@@ -20,31 +20,21 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
 
-    --text: #e0faf7;
-    --background: #020d0c;
-    --primary: #84ebdd;
-    --secondary: #173e8c;
-    --accent: #3a5bdf;
+    --text: 224, 250, 247;
+    --background: 2, 13, 12;
+    --primary: 132, 235, 221;
+    --secondary: 23, 62, 140;
+    --accent: 58, 91, 223;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --text: #e0faf7;
-    --background: #020d0c;
-    --primary: #84ebdd;
-    --secondary: #173e8c;
-    --accent: #3a5bdf;
-  }
+html {
+  scroll-behavior:smooth !important
 }
 
 body {
-  color: var(--text);
-  background: var(--background);
+  color: rgb(var(--text));
+  background: rgb(var(--background));
 }
 
 .debug {

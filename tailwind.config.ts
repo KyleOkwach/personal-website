@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,11 +15,11 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        'text-custom': 'var(--text)',
-        'background-custom': 'var(--background)',
-        'primary-custom': 'var(--primary)',
-        'secondary-custom': 'var(--secondary)',
-        'accent-custom': 'var(--accent)',
+        'text-custom': 'rgba(var(--text))',
+        'background-custom': 'rgba(var(--background))',
+        'primary-custom': 'rgba(var(--primary))',
+        'secondary-custom': 'rgba(var(--secondary))',
+        'accent-custom': 'rgba(var(--accent))',
        },
        
     },

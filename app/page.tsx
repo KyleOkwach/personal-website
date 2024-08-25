@@ -16,8 +16,8 @@ export default function Home() {
       </div>
 
       {/* Socials Bar */}
-      <div className="hidden sm:flex flex-col fixed bottom-8 left-14 gap-2">
-        <div className="flex flex-row gap-4 px-1"> {
+      <div className="hidden md:flex flex-col fixed bottom-8 left-14 gap-2">
+        <div className="flex flex-row gap-4 px-1 scroll-smooth"> {
             SocialLinks.map((item, index) => (
               <a key={ index } href={ item.href } className="group transition-all ease-in duration-200 hover:bottom-2 hover:text-primary-custom" target="blank">
                 <div className="relative transition-all ease-in duration-200 group-hover:bottom-1">

@@ -1,11 +1,11 @@
-import { FaBuffer, FaHome, FaUser } from "react-icons/fa";
-import { FaToolbox, FaXTwitter } from "react-icons/fa6";
-import { TiContacts } from "react-icons/ti";
 
+import { FaBuffer, FaHome } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FiBriefcase, FiGithub, FiLinkedin, FiUser } from "react-icons/fi";
+import { LuContact } from "react-icons/lu";
 import containers from "./containers"
-import { FiBriefcase, FiGithub, FiLinkedin, FiTool } from "react-icons/fi";
 
-const { Hero, About, Tools, Projects, Experience, Contact } = containers
+const { Hero, About, Projects, Experience, Contact } = containers
 
 export const NavItems = [
     {
@@ -16,32 +16,26 @@ export const NavItems = [
         showInNavbar: false,
     }, {
         name: "About Me",
-        href: "#About",
-        icon: FaUser,
+        href: "About",
+        icon: FiUser,
         section: About,
         showInNavbar: true,
     }, {
-        name: "Tools",
-        href: "#Tools",
-        icon: FiTool,
-        section: Tools,
-        showInNavbar: true,
-    }, {
         name: "Projects",
-        href: "#Projects",
+        href: "Projects",
         icon: FaBuffer,
         section: Projects,
         showInNavbar: true,
     }, {
         name: "Experience",
-        href: "#Experience",
+        href: "Experience",
         icon: FiBriefcase,
         section: Experience,
         showInNavbar: true,
     }, {
         name: "Contact",
-        href: "#Contact",
-        icon: TiContacts,
+        href: "Contact",
+        icon: LuContact,
         section: Contact,
         showInNavbar: true,
     },
