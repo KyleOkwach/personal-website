@@ -14,7 +14,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentLink }) => {
     return (
         <motion.div
 
-            className="flex flex-col items-center justify-between left-0 top-0 fixed w-full h-screen bg-accent-custom z-20 gap-4 p-8"
+            className="flex flex-col items-center justify-center gap-16 left-0 top-0 fixed w-full h-screen bg-accent-custom z-20 gap-4 p-8"
         >
             <div className='flex'>
                 <Link href="/">
