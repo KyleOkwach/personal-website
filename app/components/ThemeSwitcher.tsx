@@ -17,7 +17,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
 
     return (
         <button onClick={() => { currentTheme === "dark" ? setTheme("light") : setTheme("dark"); console.log(currentTheme)}}
-        className={`p-2 hover:bg-text-custom/10 rounded-lg transition-all ease-in duration-100 ${className}`}>
+        className={`p-2 md:hover:bg-text-custom/10 rounded-sm transition-all ease-in duration-100 ${className}`}>
             { currentTheme === "dark" ? (
                 <IoSunnyOutline />
                 ) : (

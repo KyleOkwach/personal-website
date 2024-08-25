@@ -69,7 +69,7 @@ export default function Navbar() {
                         }
                     </button>
                     {
-                        showSidebar && <Sidebar currentLink={ currentLink } />
+                        showSidebar && <Sidebar currentLink={ currentLink } showSidebar={ ShowSidebar } setCurrentLink={setCurrentLink} />
                     }
                 </div>
             </div>
