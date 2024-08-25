@@ -10,7 +10,7 @@ export default function Home() {
       <div className="flex flex-col w-full">
         {
           NavItems.map((item, index) => (
-            <HOC component={ <item.section /> } href={ item.href } key={ index } />
+            <HOC component={ <item.section /> } href={ item.href } key={ index } className={`${item.name === "About Mee" ? 'bg-secondary-custom text-background-custom': ''}`} />
           ))
         }
       </div>

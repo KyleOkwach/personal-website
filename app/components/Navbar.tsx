@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { FaX } from 'react-icons/fa6';
 import ThemeSwitcher from './ThemeSwitcher';
+import Sidebar from './Sidebar';
 
 export default function Navbar() {
     const [currentLink, setCurrentLink] = useState('')
@@ -15,6 +16,8 @@ export default function Navbar() {
     return(
         <nav className="flex w-full fixed h-24 md:px-14 px-10 backdrop-blur-lg z-10">
             <div className='flex flex-row w-full justify-between items-center'>
+                {/* <div className='flex md:hidden'></div> */}
+                
                 <div className='flex'>
                     <Link href="/">
                         <Logo className='w-20 h-10 fill-primary-custom'/>
@@ -23,8 +26,7 @@ export default function Navbar() {
 
                 <div className='hidden md:flex flex-row lg:gap-8 gap-4'>
                     {
-                        NavItems.map((item, index) => {
-                            return (
+                        NavItems.map((item, index) => (
                                 item.showInNavbar && (
                                     <Link href={`#${item.href}`} key={index} className='group' onClick={() => setCurrentLink(item.href)}>
                                         <div className='flex flex-col gap-1'>
@@ -40,26 +42,35 @@ export default function Navbar() {
                                     </Link>
                                 )
                             )
-                        })
+                        )
                     }
                 </div>
 
                 <div className='hidden md:flex flex-row gap-4'>
                     <a href='#resume'>
-                        <div className='border-solid border-[1px] py-2 px-4 border-primary-custom text-primary-custom rounded-sm'>
+                        <div className='flex items-center justify-center border-solid border-[1px] py-2 px-4 border-primary-custom text-primary-custom rounded-sm'>
                             <h3 className='text-sm'>Resume</h3>
                         </div>
                     </a>
-                    <ThemeSwitcher />
+                    <ThemeSwitcher className='' />
                 </div>
 
                 {/* Sidebar */}
                 <div className='flex md:hidden'>
-                    <button onClick={() => ShowSidebar(!showSidebar)} className='flex items-center justify-center text-3xl'>
+                    <button onClick={() => ShowSidebar(!showSidebar)} className='flex items-center z-30 justify-center text-3xl'>
                         {
-                            showSidebar ? <FiMenu /> : <FaX />
+                            showSidebar ? 
+                            <div className='rounded-full p-2 bg-text-custom text-background-custom'>
+                                <FaX /> 
+                            </div>: 
+                            <div className='rounded-full p-2'>
+                                <FiMenu />
+                            </div>
                         }
                     </button>
+                    {
+                        showSidebar && <Sidebar currentLink={ currentLink } />
+                    }
                 </div>
             </div>
         </nav>

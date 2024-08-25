@@ -1,9 +1,14 @@
+'use client'
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaArrowDown } from "react-icons/fa";
 
 export default function Hero() {
     return (
-        <div className="flex flex-col w-full h-full items-start justify-center sm:gap-8 gap-4">
+        <motion.div
+            className="flex flex-col w-full h-full items-start justify-center sm:gap-8 gap-4"
+        >
             <div
                 className="flex flex-col sm:gap-4 gap-2"
             >
@@ -20,6 +25,6 @@ export default function Hero() {
                     <FaArrowDown className="animate-bounce" />
                 </div>
             </Link>
-        </div>
+        </motion.div>
     )
 }
