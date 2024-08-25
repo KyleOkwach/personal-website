@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  
+    --text: #051f1c;
+    --background: #f2fdfc;
+    --primary: #147b6d;
+    --secondary: #739ae8;
+    --accent: #2041c5;
+  }
+
+  .dark {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --text: #e0faf7;
+    --background: #020d0c;
+    --primary: #84ebdd;
+    --secondary: #173e8c;
+    --accent: #3a5bdf;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,17 +33,23 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+    --text: #e0faf7;
+    --background: #020d0c;
+    --primary: #84ebdd;
+    --secondary: #173e8c;
+    --accent: #3a5bdf;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text);
+  background: var(--background);
+}
+
+.debug {
+  border: solid red 2px;
+  border-radius: 15px;
 }
 
 @layer utilities {
