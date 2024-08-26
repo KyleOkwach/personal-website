@@ -8,20 +8,24 @@ import { FiMenu } from 'react-icons/fi';
 import { FaX } from 'react-icons/fa6';
 import ThemeSwitcher from './ThemeSwitcher';
 import Sidebar from './Sidebar';
+import CustomButton from './CusomButton';
 
 export default function Navbar() {
     const [currentLink, setCurrentLink] = useState('')
     const [showSidebar, ShowSidebar] = useState(false)
 
     return(
-        <nav className="flex w-full fixed h-24 md:px-14 px-10 backdrop-blur-lg z-10">
+        <nav className="flex w-full fixed h-24 md:px-14 px-10 backdrop-blur-lg bg-background-custom/9 z-10">
             <div className='flex flex-row w-full justify-between items-center'>
                 {/* <div className='flex md:hidden'></div> */}
                 
                 <div className='flex'>
-                    <Link href="/">
-                        <Logo className='w-20 h-10 fill-primary-custom'/>
-                    </Link>
+                    {
+                        !showSidebar &&
+                        <Link href="/">
+                            <Logo className='w-20 h-10 fill-primary-custom'/>
+                        </Link>
+                    }
                 </div>
 
                 <div className='hidden md:flex flex-row lg:gap-8 gap-4'>
@@ -47,11 +51,7 @@ export default function Navbar() {
                 </div>
 
                 <div className='hidden md:flex flex-row gap-4'>
-                    <a href='#resume'>
-                        <div className='flex items-center justify-center border-solid border-[1px] py-2 px-4 border-primary-custom text-primary-custom rounded-sm'>
-                            <h3 className='text-sm'>Resume</h3>
-                        </div>
-                    </a>
+                    <CustomButton href='#Resume' content={<h3 className='text-sm'>Resume</h3>} />
                     <ThemeSwitcher className='' />
                 </div>
 
@@ -69,7 +69,7 @@ export default function Navbar() {
                         }
                     </button>
                     {
-                        showSidebar && <Sidebar currentLink={ currentLink } showSidebar={ ShowSidebar } setCurrentLink={setCurrentLink} />
+                        showSidebar && <Sidebar currentLink={currentLink} setShowSidebar={ShowSidebar} showSidebar={showSidebar} setCurrentLink={setCurrentLink} />
                     }
                 </div>
             </div>
