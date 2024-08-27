@@ -1,8 +1,31 @@
+'use client'
+
 import Link from "next/link";
 import HOC from "./components/HOC";
 import { NavItems, SocialLinks } from "./constants";
+import { sanityFetch } from "@/sanity/schemaTypes/client";
+import { SanityDocument } from "next-sanity";
+import { useState, useEffect } from "react";
+import PreRenderLoader from "./components/PreRenderLoader";
+import { infoQuery } from "./queries";
 
 export default function Home() {
+  const [info, setInfo] = useState<SanityDocument | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await sanityFetch({ query: infoQuery }) as SanityDocument;
+            setInfo(data);
+        };
+        fetchData();
+    }, []);
+
+    if (!info) {
+        return <div className="fixed z-20">
+            <PreRenderLoader />
+        </div>;
+    }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
 
@@ -10,7 +33,11 @@ export default function Home() {
       <div className="flex flex-col w-full snap-y">
         {
           NavItems.map((item, index) => (
-            <HOC component={ <item.section /> } href={ item.href } key={ index } className={`snap-center ${item.name === "About Mee" ? 'bg-secondary-custom text-background-custom': ''}`} />
+            <HOC
+              component={ <item.section info={ info } /> }
+              href={ item.href } key={ index }
+              className={`snap-center ${item.name === "About Mee" ? 'bg-secondary-custom text-background-custom': ''}`}
+            />
           ))
         }
       </div>

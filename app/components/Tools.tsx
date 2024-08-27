@@ -1,6 +1,6 @@
 export default function Tools() {
     return (
-       <div className="w-full p-16 rounded-sm border-solid border-2 border-background-custom">
+       <div className="flex w-full p-16 rounded-sm border-solid border-2 border-primary-custom items-center justify-center font-mono">
             Test
        </div>
     )
