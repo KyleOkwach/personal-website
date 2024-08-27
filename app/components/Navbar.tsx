@@ -2,13 +2,13 @@
 
 import Logo from './Logo';
 import Link from 'next/link';
+import ThemeSwitcher from './ThemeSwitcher';
+import Sidebar from './Sidebar';
+import CustomButton from './CustomButton';
 import { NavItems } from '../constants';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { FaX } from 'react-icons/fa6';
-import ThemeSwitcher from './ThemeSwitcher';
-import Sidebar from './Sidebar';
-import CustomButton from './CusomButton';
 
 export default function Navbar() {
     const [currentLink, setCurrentLink] = useState('')
@@ -57,7 +57,7 @@ export default function Navbar() {
 
                 {/* Sidebar */}
                 <div className='flex md:hidden'>
-                    <button onClick={() => ShowSidebar(!showSidebar)} className='flex items-center z-30 justify-center text-3xl'>
+                    <button onClick={() => ShowSidebar(!showSidebar)} className='flex items-center z-30 justify-center text-3xl' aria-pressed>
                         {
                             showSidebar ? 
                             <div className='rounded-full p-2 bg-text-custom text-background-custom'>
