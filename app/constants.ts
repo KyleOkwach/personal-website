@@ -4,6 +4,9 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiBriefcase, FiGithub, FiLinkedin, FiUser } from "react-icons/fi";
 import { LuContact } from "react-icons/lu";
 import containers from "./containers"
+import { sanityFetch } from "@/sanity/schemaTypes/client";
+import { SanityDocument } from "next-sanity";
+import { infoQuery } from "./queries";
 
 const { Hero, About, Projects, Experience, Contact } = containers
 
@@ -55,4 +58,4 @@ export const SocialLinks = [
         href: "http://linkedin.com/in/kyle-bolo-708016277/",
         icon: FiLinkedin
     }
-]
+];

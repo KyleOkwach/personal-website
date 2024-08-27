@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 import { sanityFetch } from "@/sanity/schemaTypes/client";
 import { SanityDocument } from "next-sanity";
+// import { info } from "../constants";
 import CustomButton from "../components/CustomButton";
 import BlockRenderer from "../components/BlockRenderer";
+import { useEffect, useState } from "react";
+import Logo from "../components/Logo";
+import PreRenderLoader from "../components/PreRenderLoader";
 
 const infoQuery = `*[_type == "about" && fullName == "Kyle Bolo"][0] {
     _id,  
@@ -15,8 +19,22 @@ const infoQuery = `*[_type == "about" && fullName == "Kyle Bolo"][0] {
     aboutMe,
 }`;
 
-export default async function Hero() {
-    const info  = await sanityFetch({ query: infoQuery }) as SanityDocument;
+export default function Hero() {
+    const [info, setInfo] = useState<SanityDocument | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await sanityFetch({ query: infoQuery }) as SanityDocument;
+            setInfo(data);
+        };
+        fetchData();
+    }, []);
+
+    if (!info) {
+        return <div className="fixed z-20">
+            <PreRenderLoader />
+        </div>;
+    }
 
     return (
         <motion.div
@@ -34,7 +52,7 @@ export default async function Hero() {
                 <h3 className="md:text-[4rem] sm:text-5xl text-3xl font-bold opacity-70">{ info.tagLine }</h3>
                 {/* <h3 className="opacity-70 md:w-[60%]">A passionate coder, designer, and engineer. I thrive on creating innovative solutions, crafting beautiful designs, and engineering robust systems. Let’s build something amazing together!</h3> */}
                 <h3 className="opacity-70 md:w-[60%]">
-                    <BlockRenderer block={info.summary} />
+                    <BlockRenderer block={info.summary} className="justify-start" />
                 </h3>
             </div>
             <CustomButton
