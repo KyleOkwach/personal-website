@@ -9,3 +9,5 @@ export const infoQuery = `*[_type == "about" && fullName == "Kyle Bolo"][0] {
     resume,
 
 }`;
+
+export const technologiesQuery = `*[_type == "technology"] {}`;

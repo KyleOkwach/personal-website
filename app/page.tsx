@@ -1,40 +1,52 @@
 'use client'
 
-import Link from "next/link";
 import HOC from "./components/HOC";
 import { NavItems, SocialLinks } from "./constants";
 import { sanityFetch } from "@/sanity/schemaTypes/client";
 import { SanityDocument } from "next-sanity";
 import { useState, useEffect } from "react";
 import PreRenderLoader from "./components/PreRenderLoader";
-import { infoQuery } from "./queries";
+import { infoQuery, technologiesQuery } from "./queries";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   const [info, setInfo] = useState<SanityDocument | null>(null);
+  const [technologies, setTechonologies] = useState<SanityDocument[]>([]);
+  const [maskSize, setMaskSize] = useState(64);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await sanityFetch({ query: infoQuery }) as SanityDocument;
-            setInfo(data);
-        };
-        fetchData();
-    }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await sanityFetch({ query: infoQuery }) as SanityDocument;
+      setInfo(data);
+    };
+    fetchData();
+  }, []);
 
-    if (!info) {
-        return <div className="fixed z-20">
-            <PreRenderLoader />
-        </div>;
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await sanityFetch({ query: technologiesQuery }) as SanityDocument[];
+      setTechonologies(data);
+    };
+    fetchData();
+  }, []);
+
+  if (!info) {
+      return <div className="fixed z-20">
+          <PreRenderLoader />
+      </div>;
+  }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main className="flex min-h-screen h-auto flex-col items-center justify-between">
+      {/* Main Mask Cursor */}
+      <CustomCursor className="w-full h-screen" maskSize={maskSize} setMaskSize={() => setMaskSize(32)} />
 
       {/* Navigation Sections */}
       <div className="flex flex-col w-full snap-y">
         {
           NavItems.map((item, index) => (
             <HOC
-              component={ <item.section info={ info } /> }
+              component={ <item.section info={ info } technologies={technologies} /> }
               href={ item.href } key={ index }
               className={`snap-center ${item.name === "About Mee" ? 'bg-secondary-custom text-background-custom': ''}`}
             />

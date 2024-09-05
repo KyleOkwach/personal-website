@@ -41,6 +41,13 @@ body {
   border: solid red 2px;
   border-radius: 15px;
 }
+.mask {
+  mask-image: url('../public/circle.svg');
+  mask-repeat: no-repeat;
+  mask-size: 32px;
+  background: rgb(var(--primary));
+  color: rgb(var(--secondary));
+}
 
 @layer utilities {
   .text-balance {

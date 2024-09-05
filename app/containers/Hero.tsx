@@ -5,9 +5,14 @@ import { FaArrowDown } from "react-icons/fa";
 import { SanityDocument } from "next-sanity";
 import CustomButton from "../components/CustomButton";
 import BlockRenderer from "../components/BlockRenderer";
-import { urlFor } from "@/sanity/lib/image";
+import CustomCursor from "../components/CustomCursor";
+import { useState } from "react";
+
+
 
 export default function Hero({ info }: { info: SanityDocument }) {
+    const [maskSize, setMaskSize] = useState(64);
+
     return (
         <motion.div
             initial={{ opacity: 0, x: -100 }}
@@ -19,8 +24,17 @@ export default function Hero({ info }: { info: SanityDocument }) {
             <div
                 className="flex flex-col sm:gap-4 gap-2"
             >
-                <h3 className="text-primary-custom font-mono">Hello there 👋, my name is</h3>
-                <h3 className="md:text-[4rem] sm:text-5xl text-3xl font-bold">{ info.fullName }.</h3>
+                <h3 className="text-primary-custom font-mono">Hello there 👋,</h3>
+                <h3 className="md:text-[4rem] sm:text-5xl text-3xl font-bold">
+                    <div className="flex flex-row relative">
+                        <div className="flex flex-row"><p>I'm  { info.fullName }.</p></div>
+                        {/* <CustomCursor maskSize={maskSize} setMaskSize={setMaskSize}>
+                            <p>
+                                I'm a { info.jobTitle }
+                            </p>
+                        </CustomCursor> */}
+                    </div>
+                </h3>
                 <h3 className="md:text-[4rem] sm:text-5xl text-3xl font-bold opacity-70">{ info.tagLine }</h3>
                 <h3 className="opacity-70 md:w-[60%]">
                     <BlockRenderer block={info.summary} className="justify-start" />
