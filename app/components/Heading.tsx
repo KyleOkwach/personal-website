@@ -5,13 +5,11 @@ interface HeadingProps {
 
 const Heading: React.FC<HeadingProps> = ({ children, icon }) => {
     return (
-        <div className="flex flex-row justify-center items-center gap-4 text-primary-custom w-full">
-                <span className="flex-grow h-[1px] bg-primary-custom/50"></span>
-                {icon}
-                <div className="flex flex-row gap-4 items-center justify-center">
-                    <h3 className="text-2xl text-text-custom">{children}</h3>
-                </div>
-                <span className="flex-grow h-[1px] bg-primary-custom/50"></span>
-            </div>
+        <div className="flex flex-col gap-2 w-auto">
+            <h3 className="flex flex-row pr-16 items-center gap-4 justify-start text-3xl font-mono font-semibold text-primary-custom">{ icon }{ children }</h3>
+            <span className="w-full h-[1px] bg-primary-custom/50"></span>
+        </div>
     )
 }
+
+export default Heading;

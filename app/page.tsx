@@ -39,17 +39,18 @@ export default function Home() {
   return (
     <main className="flex min-h-screen h-auto flex-col items-center justify-between">
       {/* Main Mask Cursor */}
-      <CustomCursor className="w-full h-screen" maskSize={maskSize} setMaskSize={() => setMaskSize(32)} />
+      {/* <CustomCursor className="w-full h-screen" maskSize={maskSize} setMaskSize={() => setMaskSize(32)} /> */}
 
       {/* Navigation Sections */}
-      <div className="flex flex-col w-full snap-y">
+      <div className="flex flex-col gap-32 md:gap-0 w-full snap-y">
         {
           NavItems.map((item, index) => (
             <HOC
-              component={ <item.section info={ info } technologies={technologies} /> }
               href={ item.href } key={ index }
               className={`snap-center ${item.name === "About Mee" ? 'bg-secondary-custom text-background-custom': ''}`}
-            />
+            >
+              <item.section info={ info } technologies={technologies} />
+            </HOC>
           ))
         }
       </div>

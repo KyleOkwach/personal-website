@@ -51,7 +51,7 @@ export default function Navbar() {
                 </div>
 
                 <div className='hidden md:flex flex-row gap-4'>
-                    <CustomButton href='#Resume' content={<h3 className='text-sm'>Resume</h3>} />
+                    <CustomButton href='#Resume'><h3 className='text-sm'>Resume</h3></CustomButton>
                     <ThemeSwitcher className='' />
                 </div>
 
